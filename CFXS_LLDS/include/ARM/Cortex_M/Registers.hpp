@@ -37,4 +37,4 @@ namespace CFXS::LLDS::ARM::Cortex_M {
         return static_cast<Register>(static_cast<std::underlying_type<Register>::type>(Register::Sn) + INDEX);
     }
 
-} // namespace LLDS::ARM::Cortex_M
+} // namespace CFXS::LLDS::ARM::Cortex_M
