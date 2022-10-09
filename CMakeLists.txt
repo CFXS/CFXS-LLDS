@@ -15,8 +15,8 @@ set_source_files_properties(${sources} PROPERTIES LANGUAGE CXX)
 set_source_files_properties(${headers} PROPERTIES LANGUAGE CXX)
 
 add_library(CFXS_LLDS ${sources})
-target_include_directories(CFXS_HW PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_include_directories(CFXS_HW PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+target_include_directories(CFXS_LLDS PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(CFXS_LLDS PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 target_precompile_headers(
   CFXS_LLDS

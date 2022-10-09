@@ -1,4 +1,6 @@
 #pragma once
+#include <CFXS/Base/Debug.hpp>
+#include <type_traits>
 
 namespace CFXS::LLDS::ARM::Cortex_M {
 
@@ -16,25 +18,27 @@ namespace CFXS::LLDS::ARM::Cortex_M {
     };
 
     static inline CoreRegister IndexToGeneralPurposeRegister(uint32_t index) {
-        CFXS_ASSERT(index <= 15, "Invalid general purpose register: R%u", index); // Index including SP/LR/PC
-        return static_cast<CoreRegister>(static_cast<std::underlying_type<Register>::type>(CoreRegister::Rn) + index);
+        CFXS_ASSERT(index <= 15, "Invalid general purpose register: R%u",
+                    index); // Index including SP/LR/PC
+        return static_cast<CoreRegister>(static_cast<std::underlying_type<CoreRegister>::type>(CoreRegister::Rn) + index);
     }
 
     template<uint32_t INDEX>
     static inline CoreRegister IndexToGeneralPurposeRegister() {
-        static_assert(INDEX <= 15, "Invalid general purpose register"); // Index including SP/LR/PC
-        return static_cast<CoreRegister>(static_cast<std::underlying_type<Register>::type>(CoreRegister::Rn) + INDEX);
+        static_assert(INDEX <= 15,
+                      "Invalid general purpose register"); // Index including SP/LR/PC
+        return static_cast<CoreRegister>(static_cast<std::underlying_type<CoreRegister>::type>(CoreRegister::Rn) + INDEX);
     }
 
     static inline CoreRegister IndexToFloatingPointRegister(uint32_t index) {
         CFXS_ASSERT(index <= 31, "Invalid FP register: S%u", index);
-        return static_cast<CoreRegister>(static_cast<std::underlying_type<Register>::type>(CoreRegister::Sn) + index);
+        return static_cast<CoreRegister>(static_cast<std::underlying_type<CoreRegister>::type>(CoreRegister::Sn) + index);
     }
 
     template<uint32_t INDEX>
     static inline CoreRegister IndexToFloatingPointRegister() {
         static_assert(INDEX <= 31, "Invalid FP register");
-        return static_cast<CoreRegister>(static_cast<std::underlying_type<Register>::type>(CoreRegister::Sn) + INDEX);
+        return static_cast<CoreRegister>(static_cast<std::underlying_type<CoreRegister>::type>(CoreRegister::Sn) + INDEX);
     }
 
 } // namespace CFXS::LLDS::ARM::Cortex_M
