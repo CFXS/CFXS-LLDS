@@ -18,7 +18,7 @@ namespace CFXS::LLDS::ARM::Cortex_M {
     };
 
     static inline CoreRegister IndexToGeneralPurposeRegister(uint32_t index) {
-        CFXS_ASSERT(index <= 15, "Invalid general purpose register: R%u",
+        CFXS_ASSERT(index <= 15, "Invalid general purpose register: R%lu",
                     index); // Index including SP/LR/PC
         return static_cast<CoreRegister>(static_cast<std::underlying_type<CoreRegister>::type>(CoreRegister::Rn) + index);
     }
@@ -31,7 +31,7 @@ namespace CFXS::LLDS::ARM::Cortex_M {
     }
 
     static inline CoreRegister IndexToFloatingPointRegister(uint32_t index) {
-        CFXS_ASSERT(index <= 31, "Invalid FP register: S%u", index);
+        CFXS_ASSERT(index <= 31, "Invalid FP register: S%lu", index);
         return static_cast<CoreRegister>(static_cast<std::underlying_type<CoreRegister>::type>(CoreRegister::Sn) + index);
     }
 
